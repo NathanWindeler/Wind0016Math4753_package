@@ -1,0 +1,65 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Wind0016Math4753)
+```
+
+## Fire Data Set
+
+The fire data set is a data frame containing the "distance from fire station" and "thousands of dollars in damage" values of various fires.
+
+```{r}
+# Data set
+fire
+```
+
+## MyCI Function
+
+The MyCI function takes in a single sample set and calculates a confidence interval for that population's mean, returned in a named list format. An optional alpha variable can be used to change the confidence interval to $(1 - \alpha) 100 \%$. By default, the function calculates the 95% confidence interval.
+
+```{r}
+# Function 1
+myci(fire$DAMAGE)
+myci(fire$DAMAGE, a = 0.5)
+```
+
+## MyBoot2 Function
+
+The MyBoot2 function graphically creates a bootstrap confidence interval for some parameter of interest of a vector. The provided vector is 'x' while the parameter of interest, such as mean or median, should be supplied as a function in the 'fun' parameter. Like the previous function, the 'alpha' parameter can be changed to create a specific percentage confidence interval. The number of sample iterations to be used in calculations can be set by the 'iter' parameter, while the 'cex' parameter affects the text size in the final graph.
+
+```{r}
+# Function 2
+myboot2(x = fire$DISTANCE, fun = "median")
+```
+
+## NTickets Function
+
+The NTickets function calculates the number of tickets an airline should sell, given the expected arrival rate of customers and the acceptable overbooking rate. 'N' is the number of seats available; 'p' is the expected arrival rate of customers, between 0.0 and 1.0; and 'gamma' is the acceptable overbooking rate, also between 0.0 and 1.0. The function calculates the number of tickets using both discrete and continuous distributions, and returns the number of tickets calculated with both methods. The return values are in a named list, with 'nc' being the number of tickets calculated with a continuous distribution; 'nd' is the number of tickets calculated with a discrete distribution; and 'N', 'p', and 'gamma' are the respective parameter values.
+
+```{r}
+# Function 3
+ntickets(N = 400, gamma = 0.10, p = 0.95)
+```
+
+## MyNCurve Function
+
+The MyNCurve function graphs a normal curve with the given mean and standard deviation, while also calculating the cumulative probability P(X<=a). The parameters are 'mu' for the mean; 'sigma' for the standard deviation; and 'a' for the upper limit of the probability. The function returns the value of P(X<=a), which also equals the area of the red shaded region on the associated graph.
+
+```{r}
+# Function 4
+myncurve(mu = 10, sigma = 5, a = 0.05)
+```

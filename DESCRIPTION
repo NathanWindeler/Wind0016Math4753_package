@@ -1,0 +1,14 @@
+Package: Wind0016Math4753
+Type: Package
+Title: Package for Math 4753
+Version: 0.1.6
+Author: Nathan Windeler
+Maintainer: Nathan Windeler <Nathan.M.Windeler-1@ou.edu>
+Description: Collection of functions for OU Math 4753 Fall 2023 class.
+    Originally (and creatively) named MyPackage.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 2.10)
